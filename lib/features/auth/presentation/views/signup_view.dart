@@ -25,9 +25,9 @@ class SignupView extends StatelessWidget {
               buildSnackBar(context, state.message);
             }
             if (state is SignupSuccess) {
+              Navigator.pushReplacementNamed(context, MainView.id);
               buildSnackBar(context, 'Account created successfully!');
               SharedPrefs.setBool(isLoggedInOrSignedUp, true);
-              Navigator.pushReplacementNamed(context, MainView.id);
             }
           },
           builder: (context, state) {

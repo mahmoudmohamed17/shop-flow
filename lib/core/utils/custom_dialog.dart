@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shop_flow/constants.dart';
+import 'package:shop_flow/core/services/shared_prefs.dart';
 import 'package:shop_flow/core/utils/app_styles.dart';
 import 'package:shop_flow/features/auth/presentation/views/signin_view.dart';
 
@@ -38,6 +40,7 @@ Future<dynamic> customDialog(BuildContext context) {
             ),
             ElevatedButton(
               onPressed: () {
+                SharedPrefs.setBool(isLoggedInOrSignedUp, false);
                 Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(

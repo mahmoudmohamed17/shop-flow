@@ -25,7 +25,9 @@ void main() async {
   Bloc.observer = CustomBlocObserver();
   getItService();
   await SharedPrefs.init();
-  runApp(const ShopFlow());
+  await Future.delayed(const Duration(seconds: 2), () {
+    runApp(const ShopFlow());
+  });
 }
 
 class ShopFlow extends StatelessWidget {

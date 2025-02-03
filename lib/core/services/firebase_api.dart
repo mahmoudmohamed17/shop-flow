@@ -24,7 +24,7 @@ class FirebaseApi {
     final token = await firebaseMessaging.getToken();
     print(
         'Token = $token'); // Important to get the Token to initialize the testing of FCM
-    initPushNotifications();
+    // initPushNotifications();
     initLocalNotifications();
   }
 

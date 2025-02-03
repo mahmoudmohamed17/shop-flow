@@ -25,8 +25,8 @@ class SigninView extends StatelessWidget {
               buildSnackBar(context, state.message);
             }
             if (state is SigninSuccess) {
-              buildSnackBar(context, 'Successfully signed in!');
               Navigator.pushReplacementNamed(context, MainView.id);
+              buildSnackBar(context, 'Successfully signed in!');
               SharedPrefs.setBool(isLoggedInOrSignedUp, true);
             }
           },
