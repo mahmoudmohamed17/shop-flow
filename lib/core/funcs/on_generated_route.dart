@@ -7,7 +7,6 @@ import 'package:shop_flow/features/home/domain/entities/product_entity.dart';
 import 'package:shop_flow/features/home/presentation/views/cart_view.dart';
 import 'package:shop_flow/features/home/presentation/views/categories_search_view.dart';
 import 'package:shop_flow/features/home/presentation/views/category_details_view.dart';
-import 'package:shop_flow/features/home/presentation/views/checkout_view.dart';
 import 'package:shop_flow/features/home/presentation/views/product_details_view.dart';
 import 'package:shop_flow/features/home/presentation/views/top_selling_and_new_in_details_view.dart';
 import 'package:shop_flow/features/onboard/presentation/views/onboard_view.dart';
@@ -46,9 +45,6 @@ Route<dynamic> onGeneratedRoute(RouteSettings settings) {
               ));
     case CartView.id:
       return MaterialPageRoute(builder: (context) => CartView());
-    case CheckoutView.id:
-    final total = settings.arguments as double;
-      return MaterialPageRoute(builder: (context) => CheckoutView(total: total,));
     case FavoritesView.id:
       return MaterialPageRoute(builder: (context) => FavoritesView());
     default:

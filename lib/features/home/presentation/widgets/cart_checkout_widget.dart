@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_flow/core/widgets/custom_button.dart';
 import 'package:shop_flow/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
-import 'package:shop_flow/features/home/presentation/views/checkout_view.dart';
 import 'package:shop_flow/features/home/presentation/widgets/cart_checkout_data.dart';
 
 class CartCheckoutWidget extends StatelessWidget {
@@ -27,8 +26,7 @@ class CartCheckoutWidget extends StatelessWidget {
                     child: CustomButton(
                       label: 'Checkout',
                       onPressed: () {
-                        Navigator.pushNamed(context, CheckoutView.id,
-                            arguments: context.read<CartCubit>().total);
+                        
                       },
                     ),
                   ),
