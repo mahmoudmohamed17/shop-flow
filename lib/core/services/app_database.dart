@@ -23,7 +23,6 @@ part 'app_database.g.dart';
   CartProductsTable,
   FavoritesProductTable,
 ])
-
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 

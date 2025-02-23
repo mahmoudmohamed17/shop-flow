@@ -6,7 +6,8 @@ import 'package:shop_flow/core/utils/assets.dart';
 
 class CustomSearchButton extends StatelessWidget {
   const CustomSearchButton({
-    super.key, required this.onTap,
+    super.key,
+    required this.onTap,
   });
 
   final VoidCallback onTap;

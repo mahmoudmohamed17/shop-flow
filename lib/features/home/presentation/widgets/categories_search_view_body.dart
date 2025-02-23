@@ -16,7 +16,9 @@ class CategoriesSearchViewBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 16,
           children: [
-            SizedBox(height: 8,),
+            SizedBox(
+              height: 8,
+            ),
             Row(
               children: [
                 GestureDetector(

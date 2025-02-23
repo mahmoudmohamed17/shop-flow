@@ -6,8 +6,7 @@ import 'package:shop_flow/core/utils/app_colors.dart';
 import 'package:shop_flow/core/utils/app_styles.dart';
 import 'package:shop_flow/main_view.dart';
 
-Future<dynamic> showPlaceOrderDialog(
-    BuildContext context, int orderNumber) {
+Future<dynamic> showPlaceOrderDialog(BuildContext context, int orderNumber) {
   return showDialog(
       context: context,
       builder: (context) {
@@ -25,7 +24,9 @@ Future<dynamic> showPlaceOrderDialog(
               onPressed: () {
                 Navigator.pushReplacementNamed(context, MainView.id);
                 FirebaseApi().sendLocalNotification(
-                    title: 'Shop Flow', body: '${SharedPrefs.getString(userName)}, your order #$orderNumber has been confirmed, check your orders history for full details.');
+                    title: 'Shop Flow',
+                    body:
+                        '${SharedPrefs.getString(userName)}, your order #$orderNumber has been confirmed, check your orders history for full details.');
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(

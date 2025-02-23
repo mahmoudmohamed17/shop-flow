@@ -7,7 +7,9 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
     required this.hintText,
-    this.onFieldSubmitted, this.onChanged, this.textInputType = TextInputType.text,
+    this.onFieldSubmitted,
+    this.onChanged,
+    this.textInputType = TextInputType.text,
   });
   final String hintText;
   final void Function(String)? onFieldSubmitted;
@@ -29,7 +31,6 @@ class CustomTextField extends StatelessWidget {
       keyboardType: textInputType,
       decoration: InputDecoration(
         hintText: hintText,
-        
         hintStyle: AppStyles.regular16.copyWith(color: borderHintTextColor),
         fillColor: borderFillColor,
         contentPadding: EdgeInsets.all(12),

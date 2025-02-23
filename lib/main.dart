@@ -1,11 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shop_flow/constants.dart';
 import 'package:shop_flow/core/funcs/get_it_service.dart';
 import 'package:shop_flow/core/funcs/on_generated_route.dart';
 import 'package:shop_flow/core/services/firebase_api.dart';
 import 'package:shop_flow/core/services/shared_prefs.dart';
+import 'package:shop_flow/core/utils/api_keys.dart';
 import 'package:shop_flow/custom_bloc_observer.dart';
 import 'package:shop_flow/features/auth/presentation/views/signin_view.dart';
 import 'package:shop_flow/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
@@ -24,6 +26,7 @@ void main() async {
   await FirebaseApi().initNotifications();
   Bloc.observer = CustomBlocObserver();
   getItService();
+  Stripe.publishableKey = ApiKeys.stripePublishableKey;
   await SharedPrefs.init();
   await Future.delayed(const Duration(seconds: 2), () {
     runApp(const ShopFlow());

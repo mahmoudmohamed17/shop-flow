@@ -11,10 +11,10 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.primaryColor,
-            elevation: 0,
-            shadowColor: Colors.transparent,
-            ),
+          backgroundColor: AppColors.primaryColor,
+          elevation: 0,
+          shadowColor: Colors.transparent,
+        ),
         child: Text(
           label,
           style: AppStyles.medium16.copyWith(color: Colors.white),

@@ -7,7 +7,7 @@ import 'package:shop_flow/features/profile/data/models/user_setting_option_model
 
 class SettingOptionWidget extends StatelessWidget {
   const SettingOptionWidget({super.key, required this.model});
-final UserSettingOptionModel model;
+  final UserSettingOptionModel model;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

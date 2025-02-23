@@ -3,7 +3,8 @@ import 'package:shop_flow/core/utils/app_styles.dart';
 import 'package:shop_flow/core/widgets/custom_button.dart';
 import 'package:shop_flow/core/widgets/custom_text_form_field.dart';
 
-Future<dynamic> saveCheckoutItemData(BuildContext context, {required String title, required VoidCallback onTap}) {
+Future<dynamic> saveCheckoutItemData(BuildContext context,
+    {required String title, required VoidCallback onTap}) {
   return showModalBottomSheet(
       context: context,
       builder: (context) {

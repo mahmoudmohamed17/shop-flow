@@ -30,7 +30,6 @@ class OrdersEmptyBody extends StatelessWidget {
                 child: EmptyViewBody(
                     images: Assets.imagesOrdersEmpty, title: 'No Orders Yet')),
             Expanded(child: SizedBox()),
-            
           ],
         ),
       ),
