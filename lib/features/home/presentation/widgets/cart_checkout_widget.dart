@@ -5,6 +5,7 @@ import 'package:shop_flow/core/services/stripe_service.dart';
 import 'package:shop_flow/core/widgets/custom_button.dart';
 import 'package:shop_flow/features/home/data/models/payment_intent_input_model.dart';
 import 'package:shop_flow/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
+import 'package:shop_flow/features/home/presentation/manager/checkout_cubit/checkout_cubit.dart';
 import 'package:shop_flow/features/home/presentation/widgets/cart_checkout_data.dart';
 
 class CartCheckoutWidget extends StatelessWidget {
@@ -14,7 +15,7 @@ class CartCheckoutWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CartCubit, CartState>(
+    return BlocBuilder<CheckoutCubit, CheckoutState>(
       builder: (context, state) {
         return Column(
           spacing: 12,
@@ -28,6 +29,7 @@ class CartCheckoutWidget extends StatelessWidget {
                   Expanded(
                     child: CustomButton(
                       label: 'Checkout',
+                      isLoading: state is CheckoutCubit,
                       onPressed: () async {
                         double amount = context.read<CartCubit>().total + 8.00;
                         var paymentIntentModel = PaymentIntentInputModel(
