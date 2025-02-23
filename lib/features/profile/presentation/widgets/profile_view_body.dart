@@ -17,13 +17,15 @@ class ProfileViewBody extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                Assets.imagesReviewer,
-                height: 120,
-                width: 120,
+              CircleAvatar(
+                radius: 80,
+                backgroundColor: Colors.transparent,
+                child: Image.asset(
+                  Assets.imagesReviewer,
+                ),
               ),
               SizedBox(
-                height: 32,
+                height: 24,
               ),
               UserInfoBadge(),
               SizedBox(

@@ -50,41 +50,21 @@ class _MainViewState extends State<MainView> {
             items: [
               SalomonBottomBarItem(
                 icon: SvgPicture.asset(Assets.imagesHome),
-                activeIcon: SvgPicture.asset(
-                  Assets.imagesHome,
-                  colorFilter:
-                      ColorFilter.mode(AppColors.primaryColor, BlendMode.srcIn),
-                ),
                 title: Text('Home'),
                 selectedColor: AppColors.primaryColor,
               ),
               SalomonBottomBarItem(
                 icon: SvgPicture.asset(Assets.imagesNotificationBing),
-                activeIcon: SvgPicture.asset(
-                  Assets.imagesNotificationBing,
-                  colorFilter:
-                      ColorFilter.mode(AppColors.primaryColor, BlendMode.srcIn),
-                ),
                 title: Text('Notification'),
                 selectedColor: AppColors.primaryColor,
               ),
               SalomonBottomBarItem(
                 icon: SvgPicture.asset(Assets.imagesReceipt),
-                activeIcon: SvgPicture.asset(
-                  Assets.imagesReceipt,
-                  colorFilter:
-                      ColorFilter.mode(AppColors.primaryColor, BlendMode.srcIn),
-                ),
                 title: Text('Receipt'),
                 selectedColor: AppColors.primaryColor,
               ),
               SalomonBottomBarItem(
                 icon: SvgPicture.asset(Assets.imagesProfile),
-                activeIcon: SvgPicture.asset(
-                  Assets.imagesProfile,
-                  colorFilter:
-                      ColorFilter.mode(AppColors.primaryColor, BlendMode.srcIn),
-                ),
                 title: Text('Profile'),
                 selectedColor: AppColors.primaryColor,
               ),
