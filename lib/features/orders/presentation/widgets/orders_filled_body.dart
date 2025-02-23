@@ -50,15 +50,16 @@ class OrdersFilledBody extends StatelessWidget {
                             context
                                 .read<OrdersCubit>()
                                 .deleteOrder(orders[index]);
-                            context.read<NotificationsCubit>().addNotification(
-                                NotificationModel(
-                                    message:
-                                        '${SharedPrefs.getString(userName)}, thank you for shopping with us, we have canceled order #${orders[index].orderNumber}',
-                                    orderId: 0));
+                            var message =
+                                'Dear ${SharedPrefs.getString(userName)}, thank you for shopping with us, we have canceled order #${orders[index].orderNumber}';
+                            var notificationModel = NotificationModel(
+                                message: message,
+                                orderId: orders[index].orderNumber);
+                            context
+                                .read<NotificationsCubit>()
+                                .addNotification(notificationModel);
                             FirebaseApi().sendLocalNotification(
-                                title: 'Shop Flow',
-                                body:
-                                    '${SharedPrefs.getString(userName)}, thank you for shopping with us, we have canceled order #${orders[index].orderNumber}');
+                                title: 'Shop Flow', body: message);
                           },
                           icon: Icons.delete,
                           backgroundColor: Colors.red,

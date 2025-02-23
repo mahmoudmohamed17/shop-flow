@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shop_flow/constants.dart';
-import 'package:shop_flow/core/services/firebase_api.dart';
-import 'package:shop_flow/core/services/shared_prefs.dart';
+import 'package:shop_flow/core/funcs/handle_orders_process.dart';
+import 'package:shop_flow/core/services/stripe_service.dart';
 import 'package:shop_flow/core/widgets/custom_button.dart';
+import 'package:shop_flow/features/home/data/models/payment_intent_input_model.dart';
 import 'package:shop_flow/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:shop_flow/features/home/presentation/widgets/cart_checkout_data.dart';
 
@@ -28,11 +28,16 @@ class CartCheckoutWidget extends StatelessWidget {
                   Expanded(
                     child: CustomButton(
                       label: 'Checkout',
-                      onPressed: () {
-                        FirebaseApi().sendLocalNotification(
-                            title: 'New checkout',
-                            body:
-                                'Good job ${SharedPrefs.getString(userName)}, You have successfully checked out!');
+                      onPressed: () async {
+                        double amount = context.read<CartCubit>().total + 8.00;
+                        var paymentIntentModel = PaymentIntentInputModel(
+                            amount: '${amount.round().toString()}00',
+                            currency: 'USD',
+                            customerId: 'cus_RpKI83u4dPxSEM');
+                        var stripe = StripeService();
+                        await stripe.makePayment(model: paymentIntentModel);
+                        // ignore: use_build_context_synchronously
+                        handleAfterPaymentProcess(context);
                       },
                     ),
                   ),
