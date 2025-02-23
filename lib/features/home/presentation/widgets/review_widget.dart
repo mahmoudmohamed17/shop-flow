@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_flow/constants.dart';
+import 'package:shop_flow/core/funcs/setup_date_formate.dart';
 import 'package:shop_flow/core/utils/app_styles.dart';
 import 'package:shop_flow/core/utils/assets.dart';
 import 'package:shop_flow/features/home/data/models/review_model.dart';
@@ -39,7 +40,7 @@ class ReviewWidget extends StatelessWidget {
             style: AppStyles.medium12.copyWith(color: subTextColor),
           ),
           Text(
-            'Published at: ${reviewModel.date.substring(0, 10)}',
+            'Posted at: ${setupDateFormate(reviewModel.date.substring(0, 10))}',
             style: AppStyles.medium12,
           ),
         ],
