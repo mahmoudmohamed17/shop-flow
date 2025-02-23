@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:shop_flow/core/funcs/get_it_service.dart';
 import 'package:shop_flow/core/utils/app_colors.dart';
 import 'package:shop_flow/core/utils/assets.dart';
@@ -39,11 +40,7 @@ class _MainViewState extends State<MainView> {
             index: currentIndex,
             children: pages,
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            type: BottomNavigationBarType.fixed,
-            elevation: 5,
+          bottomNavigationBar: SalomonBottomBar(
             currentIndex: currentIndex,
             onTap: (index) {
               setState(() {
@@ -51,41 +48,45 @@ class _MainViewState extends State<MainView> {
               });
             },
             items: [
-              BottomNavigationBarItem(
+              SalomonBottomBarItem(
                 icon: SvgPicture.asset(Assets.imagesHome),
-                label: 'Home',
                 activeIcon: SvgPicture.asset(
                   Assets.imagesHome,
                   colorFilter:
                       ColorFilter.mode(AppColors.primaryColor, BlendMode.srcIn),
                 ),
+                title: Text('Home'),
+                selectedColor: AppColors.primaryColor,
               ),
-              BottomNavigationBarItem(
+              SalomonBottomBarItem(
                 icon: SvgPicture.asset(Assets.imagesNotificationBing),
-                label: 'Notification',
                 activeIcon: SvgPicture.asset(
                   Assets.imagesNotificationBing,
                   colorFilter:
                       ColorFilter.mode(AppColors.primaryColor, BlendMode.srcIn),
                 ),
+                title: Text('Notification'),
+                selectedColor: AppColors.primaryColor,
               ),
-              BottomNavigationBarItem(
+              SalomonBottomBarItem(
                 icon: SvgPicture.asset(Assets.imagesReceipt),
-                label: 'Receipt',
                 activeIcon: SvgPicture.asset(
                   Assets.imagesReceipt,
                   colorFilter:
                       ColorFilter.mode(AppColors.primaryColor, BlendMode.srcIn),
                 ),
+                title: Text('Receipt'),
+                selectedColor: AppColors.primaryColor,
               ),
-              BottomNavigationBarItem(
+              SalomonBottomBarItem(
                 icon: SvgPicture.asset(Assets.imagesProfile),
-                label: 'Profile',
                 activeIcon: SvgPicture.asset(
                   Assets.imagesProfile,
                   colorFilter:
                       ColorFilter.mode(AppColors.primaryColor, BlendMode.srcIn),
                 ),
+                title: Text('Profile'),
+                selectedColor: AppColors.primaryColor,
               ),
             ],
           ),

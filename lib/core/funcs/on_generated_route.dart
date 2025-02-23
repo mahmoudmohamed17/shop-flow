@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shop_flow/features/auth/presentation/views/password_verified_view.dart';
-import 'package:shop_flow/features/auth/presentation/views/reset_password_view.dart';
 import 'package:shop_flow/features/auth/presentation/views/signin_view.dart';
 import 'package:shop_flow/features/auth/presentation/views/signup_view.dart';
 import 'package:shop_flow/features/home/data/models/category_model.dart';
@@ -24,10 +22,6 @@ Route<dynamic> onGeneratedRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => SigninView());
     case SignupView.id:
       return MaterialPageRoute(builder: (context) => SignupView());
-    case ResetPasswordView.id:
-      return MaterialPageRoute(builder: (context) => ResetPasswordView());
-    case PasswordVerifiedView.id:
-      return MaterialPageRoute(builder: (context) => PasswordVerifiedView());
     case MainView.id:
       return MaterialPageRoute(builder: (context) => MainView());
     case CategoriesSearchView.id:

@@ -13,7 +13,8 @@ class CustomButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.primaryColor,
             elevation: 0,
-            shadowColor: Colors.transparent),
+            shadowColor: Colors.transparent,
+            ),
         child: Text(
           label,
           style: AppStyles.medium16.copyWith(color: Colors.white),
