@@ -40,7 +40,7 @@ class ReviewWidget extends StatelessWidget {
             style: AppStyles.medium12.copyWith(color: subTextColor),
           ),
           Text(
-            'Posted at: ${setupDateFormate(reviewModel.date.substring(0, 10))}',
+            setupDateFormate(reviewModel.date.substring(0, 10)),
             style: AppStyles.medium12,
           ),
         ],

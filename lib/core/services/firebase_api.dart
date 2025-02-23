@@ -19,10 +19,12 @@ class FirebaseApi {
     onGeneratedRoute(RouteSettings(name: MainView.id));
   }
 
+  // Important to enable the permission for the notifications
+  // This method is called in the main.dart file
   Future<void> initNotifications() async {
     await firebaseMessaging.requestPermission();
     final token = await firebaseMessaging.getToken();
-    print(
+    debugPrint(
         'Token = $token'); // Important to get the Token to initialize the testing of FCM
     // initPushNotifications();
     initLocalNotifications();
@@ -67,7 +69,7 @@ class FirebaseApi {
     await platform?.createNotificationChannel(androidNotificationChannel);
   }
 
-  // in case sending a notification depending on an event
+  // Use this in case you want to send a notification depending on an event
   void sendLocalNotification({required String title, required String body}) {
     flutterLocalNotificationsPlugin.show(
       DateTime.now().millisecondsSinceEpoch ~/

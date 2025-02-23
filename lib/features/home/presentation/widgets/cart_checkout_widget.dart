@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_flow/constants.dart';
+import 'package:shop_flow/core/services/firebase_api.dart';
+import 'package:shop_flow/core/services/shared_prefs.dart';
 import 'package:shop_flow/core/widgets/custom_button.dart';
 import 'package:shop_flow/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:shop_flow/features/home/presentation/widgets/cart_checkout_data.dart';
@@ -26,7 +29,10 @@ class CartCheckoutWidget extends StatelessWidget {
                     child: CustomButton(
                       label: 'Checkout',
                       onPressed: () {
-                        
+                        FirebaseApi().sendLocalNotification(
+                            title: 'New checkout',
+                            body:
+                                'Good job ${SharedPrefs.getString(userName)}, You have successfully checked out!');
                       },
                     ),
                   ),
