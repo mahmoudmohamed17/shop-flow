@@ -23,9 +23,9 @@ class FirebaseApi {
   // This method is called in the main.dart file
   Future<void> initNotifications() async {
     await firebaseMessaging.requestPermission();
-    final token = await firebaseMessaging.getToken();
-    debugPrint(
-        'Token = $token'); // Important to get the Token to initialize the testing of FCM
+    // final token = await firebaseMessaging.getToken();
+    // debugPrint(
+    //     'Token = $token'); // Important to get the Token to initialize the testing of FCM
     // initPushNotifications();
     initLocalNotifications();
   }

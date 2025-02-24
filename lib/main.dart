@@ -26,7 +26,7 @@ void main() async {
   getItService();
   Stripe.publishableKey = ApiKeys.stripePublishableKey;
   await SharedPrefs.init();
-  await Future.delayed(const Duration(seconds: 2), () {
+  await Future.delayed(const Duration(seconds: 1), () {
     runApp(const ShopFlow());
   });
 }

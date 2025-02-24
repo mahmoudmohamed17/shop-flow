@@ -1,16 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop_flow/constants.dart';
-import 'package:shop_flow/core/services/shared_prefs.dart';
+import 'package:shop_flow/core/funcs/add_data_to_firestore.dart';
 import 'package:shop_flow/core/utils/app_styles.dart';
 import 'package:shop_flow/core/utils/assets.dart';
+import 'package:shop_flow/core/utils/user_data_manager.dart';
 import 'package:shop_flow/core/widgets/custom_button.dart';
 import 'package:shop_flow/core/widgets/custom_password_text_form_field.dart';
 import 'package:shop_flow/core/widgets/custom_text_form_field.dart';
 import 'package:shop_flow/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:shop_flow/features/auth/presentation/widgets/image_picking_widget.dart';
+import 'package:shop_flow/features/home/data/models/firestore_user_data.dart';
 
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
@@ -50,10 +50,16 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                   'Create Account',
                   style: AppStyles.bold32,
                 ),
-                ImagePickingWidget(
-                  onTap: (value) {
-                    image = value;
-                  },
+                Align(
+                  alignment: Alignment.center,
+                  child: ImagePickingWidget(
+                    onTap: (value) {
+                      image = value;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 2,
                 ),
                 CustomTextField(
                   hintText: 'Name',
@@ -94,17 +100,13 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                           context
                               .read<SignupCubit>()
                               .signUp(email: email, password: password);
-                          var users =
-                              FirebaseFirestore.instance.collection(userData);
-                          await users.add({
-                            'username': name,
-                            'email': email,
-                            'password': password,
-                            'profileImage': image,
-                            'phoneNumber': phoneNumber,
-                          }).then((value) async {
-                            await SharedPrefs.setString(userDocRefId, value.id);
-                          });
+                          await addDataToFirestore(FirestoreUserData(
+                              email: email,
+                              password: password,
+                              phoneNumber: phoneNumber,
+                              profileImage: image,
+                              username: name));
+                          await UserDataManager.getUserData();
                         } else {
                           setState(() {
                             autovalidateMode = AutovalidateMode.always;
