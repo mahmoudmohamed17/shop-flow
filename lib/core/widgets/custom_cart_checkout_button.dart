@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shop_flow/core/funcs/build_snack_bar.dart';
+import 'package:shop_flow/core/funcs/snack_bar.dart';
 import 'package:shop_flow/core/utils/app_colors.dart';
 import 'package:shop_flow/core/utils/app_styles.dart';
 import 'package:shop_flow/features/home/domain/entities/product_entity.dart';
@@ -24,10 +24,10 @@ class CustomCartCheckoutButton extends StatelessWidget {
             log('Product ${product.id} has the following data:\n${product.toString()}');
             if (product.isAddedToCart) {
               context.read<CartCubit>().removeProduct(product);
-              buildSnackBar(context, 'Product removed from Cart.');
+              snackBar(context, 'Product removed from Cart.');
             } else {
               context.read<CartCubit>().addProduct(product);
-              buildSnackBar(context, 'Product added to Cart!');
+              snackBar(context, 'Product added to Cart!');
             }
           },
           child: Container(

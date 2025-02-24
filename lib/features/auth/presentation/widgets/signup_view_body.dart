@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,6 +10,7 @@ import 'package:shop_flow/core/widgets/custom_button.dart';
 import 'package:shop_flow/core/widgets/custom_password_text_form_field.dart';
 import 'package:shop_flow/core/widgets/custom_text_form_field.dart';
 import 'package:shop_flow/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
+import 'package:shop_flow/features/auth/presentation/widgets/image_picking_widget.dart';
 
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
@@ -18,7 +20,7 @@ class SignupViewBody extends StatefulWidget {
 }
 
 class _SignupViewBodyState extends State<SignupViewBody> {
-  late String email, password;
+  late String email, password, name, phoneNumber, image;
   late GlobalKey<FormState> formKey;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
@@ -48,24 +50,28 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                   'Create Account',
                   style: AppStyles.bold32,
                 ),
+                ImagePickingWidget(
+                  onTap: (value) {
+                    image = value;
+                  },
+                ),
                 CustomTextField(
                   hintText: 'Name',
                   onChanged: (value) async {
-                    await SharedPrefs.setString(userName, value);
+                    name = value;
                   },
                 ),
                 CustomTextField(
                   hintText: 'Phone Number',
                   textInputType: TextInputType.number,
                   onChanged: (value) async {
-                    await SharedPrefs.setString(phoneNumber, value);
+                    phoneNumber = value;
                   },
                 ),
                 CustomTextField(
                   hintText: 'Email Address',
                   onChanged: (value) async {
                     email = value;
-                    await SharedPrefs.setString(userEmail, value);
                   },
                 ),
                 CustomPasswordTextFormField(
@@ -82,12 +88,23 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                     Expanded(
                         child: CustomButton(
                       label: 'Continue',
-                      onPressed: () {
+                      onPressed: () async {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
                           context
                               .read<SignupCubit>()
                               .signUp(email: email, password: password);
+                          var users =
+                              FirebaseFirestore.instance.collection(userData);
+                          await users.add({
+                            'username': name,
+                            'email': email,
+                            'password': password,
+                            'profileImage': image,
+                            'phoneNumber': phoneNumber,
+                          }).then((value) async {
+                            await SharedPrefs.setString(userDocRefId, value.id);
+                          });
                         } else {
                           setState(() {
                             autovalidateMode = AutovalidateMode.always;

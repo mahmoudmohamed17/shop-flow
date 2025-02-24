@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shop_flow/core/services/api_service.dart';
@@ -13,6 +14,8 @@ import 'package:shop_flow/features/home/domain/repositories/home_repo.dart';
 final getIt = GetIt.instance;
 
 void getItService() {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  getIt.registerSingleton<FirebaseFirestore>(firestore);
   getIt.registerSingleton<FirebaseAuthService>(FirebaseAuthService());
   getIt.registerSingleton<AuthRepo>(AuthRepoImpl(getIt<FirebaseAuthService>()));
   getIt.registerSingleton<ApiService>(ApiService(Dio()));

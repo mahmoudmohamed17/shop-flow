@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop_flow/constants.dart';
 import 'package:shop_flow/core/extensions/context_extension.dart';
-import 'package:shop_flow/core/funcs/build_snack_bar.dart';
+import 'package:shop_flow/core/funcs/snack_bar.dart';
 import 'package:shop_flow/core/funcs/load_product_state.dart';
 import 'package:shop_flow/core/utils/app_styles.dart';
 import 'package:shop_flow/core/utils/assets.dart';
@@ -102,13 +102,13 @@ class ProductItem extends StatelessWidget {
                         context
                             .read<FavoritesCubit>()
                             .deleteFromFavorite(productEntity);
-                        buildSnackBar(
+                        snackBar(
                             context, 'Product removed from Favorites.');
                       } else {
                         context
                             .read<FavoritesCubit>()
                             .addToFavorites(productEntity);
-                        buildSnackBar(context, 'Product added to Favorites!');
+                        snackBar(context, 'Product added to Favorites!');
                       }
                     },
                     child: SvgPicture.asset(

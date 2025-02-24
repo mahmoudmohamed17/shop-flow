@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shop_flow/constants.dart';
-import 'package:shop_flow/core/services/shared_prefs.dart';
 import 'package:shop_flow/core/utils/app_colors.dart';
 import 'package:shop_flow/core/utils/app_styles.dart';
+import 'package:shop_flow/features/home/data/models/firestore_user_data.dart';
 
 class UserInfoBadge extends StatelessWidget {
-  const UserInfoBadge({super.key});
+  const UserInfoBadge({super.key, required this.data});
+  final FirestoreUserData data;
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +20,17 @@ class UserInfoBadge extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            SharedPrefs.getString(userName),
+            data.username,
             style: AppStyles.bold16,
           ),
           ListTile(
             contentPadding: EdgeInsets.zero,
             title: Text(
-              SharedPrefs.getString(userEmail),
+              data.email,
               style: AppStyles.regular16.copyWith(color: subTextColor),
             ),
             subtitle: Text(
-              '01127243403',
+              data.phoneNumber,
               style: AppStyles.regular16.copyWith(color: subTextColor),
             ),
             trailing: Text(

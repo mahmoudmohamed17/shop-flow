@@ -1,7 +1,7 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 
-void buildSnackBar(BuildContext context, String message) {
+void snackBar(BuildContext context, String message) {
   Flushbar(
     message: message,
     icon: Icon(

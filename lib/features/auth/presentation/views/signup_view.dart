@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:shop_flow/constants.dart';
-import 'package:shop_flow/core/funcs/build_snack_bar.dart';
+import 'package:shop_flow/core/funcs/snack_bar.dart';
 import 'package:shop_flow/core/funcs/get_it_service.dart';
 import 'package:shop_flow/core/services/shared_prefs.dart';
 import 'package:shop_flow/features/auth/domain/repositories/auth_repo.dart';
@@ -22,11 +22,11 @@ class SignupView extends StatelessWidget {
         body: BlocConsumer<SignupCubit, SignupState>(
           listener: (context, state) {
             if (state is SignupFailure) {
-              buildSnackBar(context, state.message);
+              snackBar(context, state.message);
             }
             if (state is SignupSuccess) {
               Navigator.pushReplacementNamed(context, MainView.id);
-              buildSnackBar(context, 'Account created successfully!');
+              snackBar(context, 'Account created successfully!');
               SharedPrefs.setBool(isLoggedInOrSignedUp, true);
             }
           },
