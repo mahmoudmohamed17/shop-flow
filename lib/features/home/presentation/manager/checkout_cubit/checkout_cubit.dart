@@ -11,9 +11,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
 
   Future<void> makePayment({required PaymentIntentInputModel model}) async {
     emit(CheckoutLoading());
-
     var result = await checkoutRepo.makePayment(model: model);
-
     result.fold((failed) => emit(CheckoutFailed(message: failed.message)),
         (success) => emit(CheckoutSuccess()));
   }

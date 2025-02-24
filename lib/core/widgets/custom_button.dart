@@ -19,7 +19,14 @@ class CustomButton extends StatelessWidget {
         ),
         child: isLoading
             ? Center(
-                child: CircularProgressIndicator(),
+                child: SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                    strokeWidth: 2,
+                  ),
+                ),
               )
             : Text(
                 label,

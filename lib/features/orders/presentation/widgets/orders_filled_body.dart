@@ -59,7 +59,7 @@ class OrdersFilledBody extends StatelessWidget {
                                 .read<NotificationsCubit>()
                                 .addNotification(notificationModel);
                             FirebaseApi().sendLocalNotification(
-                                title: 'Shop Flow', body: message);
+                                title: 'Order canceled', body: message);
                           },
                           icon: Icons.delete,
                           backgroundColor: Colors.red,
