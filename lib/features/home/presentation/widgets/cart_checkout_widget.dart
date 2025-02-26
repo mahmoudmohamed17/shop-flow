@@ -34,7 +34,7 @@ class CartCheckoutWidget extends StatelessWidget {
                         var paymentIntentModel = PaymentIntentInputModel(
                             amount: '${amount.round().toString()}00',
                             currency: 'USD',
-                            customerId: 'cus_RpKI83u4dPxSEM');
+                            customerId: 'cus_RqOK9KKStz1fzS');
                         await context
                             .read<CheckoutCubit>()
                             .makePayment(model: paymentIntentModel);

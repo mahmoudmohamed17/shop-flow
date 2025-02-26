@@ -53,7 +53,7 @@ class StripeService {
         paymentSheetParameters: SetupPaymentSheetParameters(
       paymentIntentClientSecret: model.clientSecret,
       customerEphemeralKeySecret: model.ephemeralKey,
-      customerId: 'cus_RpKI83u4dPxSEM', // don't forget
+      customerId: 'cus_RqOK9KKStz1fzS', // don't forget
       merchantDisplayName: 'Shop Flow', // The organization name
     ));
   }
