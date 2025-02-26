@@ -55,12 +55,12 @@ class _MainViewState extends State<MainView> {
               ),
               SalomonBottomBarItem(
                 icon: SvgPicture.asset(Assets.imagesNotificationBing),
-                title: Text('Notification'),
+                title: Text('Notifications'),
                 selectedColor: AppColors.primaryColor,
               ),
               SalomonBottomBarItem(
                 icon: SvgPicture.asset(Assets.imagesReceipt),
-                title: Text('Receipt'),
+                title: Text('Orders'),
                 selectedColor: AppColors.primaryColor,
               ),
               SalomonBottomBarItem(

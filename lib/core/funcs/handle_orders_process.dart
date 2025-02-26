@@ -16,7 +16,7 @@ void handleAfterPaymentProcess(BuildContext context) {
   var order = OrderItemModel(itemsCount: ordersCount, orderNumber: orderNumber);
   context.read<OrdersCubit>().addOrder(order);
   var notificationMsg =
-      'Dear ${SharedPrefs.getString(userName)}, you have a new order with number #$orderNumber.';
+      'Dear ${SharedPrefs.getString(userName)}, you have a new order with number #$orderNumber';
   FirebaseApi()
       .sendLocalNotification(title: 'New checkout!', body: notificationMsg);
   var notification =

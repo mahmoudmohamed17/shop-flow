@@ -5,7 +5,6 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shop_flow/core/funcs/check_initial_route.dart';
 import 'package:shop_flow/core/funcs/get_it_service.dart';
 import 'package:shop_flow/core/funcs/on_generated_route.dart';
-import 'package:shop_flow/core/funcs/request_permission.dart';
 import 'package:shop_flow/core/services/firebase_api.dart';
 import 'package:shop_flow/core/services/shared_prefs.dart';
 import 'package:shop_flow/core/utils/api_keys.dart';
