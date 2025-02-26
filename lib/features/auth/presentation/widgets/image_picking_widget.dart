@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class _ImagePickingWidgetState extends State<ImagePickingWidget> {
       setState(() {
         _imageFile = File(image.path);
       });
+      log('Image path = ${_imageFile!.path}');
       widget.onTap?.call(_imageFile!.path);
     }
   }

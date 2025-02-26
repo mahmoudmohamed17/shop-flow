@@ -5,6 +5,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shop_flow/core/funcs/check_initial_route.dart';
 import 'package:shop_flow/core/funcs/get_it_service.dart';
 import 'package:shop_flow/core/funcs/on_generated_route.dart';
+import 'package:shop_flow/core/funcs/request_permission.dart';
 import 'package:shop_flow/core/services/firebase_api.dart';
 import 'package:shop_flow/core/services/shared_prefs.dart';
 import 'package:shop_flow/core/utils/api_keys.dart';
@@ -18,17 +19,17 @@ import 'package:shop_flow/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  await FirebaseApi().initNotifications();
   Bloc.observer = CustomBlocObserver();
   getItService();
   Stripe.publishableKey = ApiKeys.stripePublishableKey;
-  await SharedPrefs.init();
-  await Future.delayed(const Duration(seconds: 1), () {
-    runApp(const ShopFlow());
-  });
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await Future.wait([
+    SharedPrefs.init(),
+    FirebaseApi().initNotifications(),
+  ]);
+  runApp(const ShopFlow());
 }
 
 class ShopFlow extends StatelessWidget {

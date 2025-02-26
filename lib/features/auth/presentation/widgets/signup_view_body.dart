@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop_flow/core/funcs/add_data_to_firestore.dart';
+import 'package:shop_flow/core/funcs/save_user_data.dart';
 import 'package:shop_flow/core/utils/app_styles.dart';
 import 'package:shop_flow/core/utils/assets.dart';
-import 'package:shop_flow/core/utils/user_data_manager.dart';
 import 'package:shop_flow/core/widgets/custom_button.dart';
 import 'package:shop_flow/core/widgets/custom_password_text_form_field.dart';
 import 'package:shop_flow/core/widgets/custom_text_form_field.dart';
 import 'package:shop_flow/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:shop_flow/features/auth/presentation/widgets/image_picking_widget.dart';
-import 'package:shop_flow/features/home/data/models/firestore_user_data.dart';
 
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
@@ -25,8 +23,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   void initState() {
-    formKey = GlobalKey<FormState>();
     super.initState();
+    formKey = GlobalKey<FormState>();
   }
 
   @override
@@ -57,9 +55,6 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                       image = value;
                     },
                   ),
-                ),
-                SizedBox(
-                  height: 2,
                 ),
                 CustomTextField(
                   hintText: 'Name',
@@ -97,16 +92,16 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                       onPressed: () async {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
+                          await saveUserData(
+                            name: name,
+                            email: email,
+                            phone: phoneNumber,
+                            image: image,
+                          );
+                          // ignore: use_build_context_synchronously
                           context
                               .read<SignupCubit>()
                               .signUp(email: email, password: password);
-                          await addDataToFirestore(FirestoreUserData(
-                              email: email,
-                              password: password,
-                              phoneNumber: phoneNumber,
-                              profileImage: image,
-                              username: name));
-                          await UserDataManager.getUserData();
                         } else {
                           setState(() {
                             autovalidateMode = AutovalidateMode.always;

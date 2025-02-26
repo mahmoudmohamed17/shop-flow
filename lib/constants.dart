@@ -8,5 +8,6 @@ const isLoggedInOrSignedUp = 'is_logged_in_or_signed_up';
 const userName = 'user_name';
 const userEmail = 'user_email';
 const phoneNumber = 'phone_number';
+const profileImage = 'profile_image';
 const userData = 'user_data';
 const userDocRefId = 'user_doc_ref_id';

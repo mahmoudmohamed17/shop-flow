@@ -32,6 +32,7 @@ dependencies:
   modal_progress_hud_nsn: ^0.5.1
   path: ^1.9.0
   path_provider: ^2.1.5
+  permission_handler: ^11.4.0
   salomon_bottom_bar: ^3.3.2
   shared_preferences: ^2.3.5
 dev_dependencies:

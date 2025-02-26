@@ -1,3 +1,5 @@
+import 'package:shop_flow/core/utils/assets.dart';
+
 class FirestoreUserData {
   final String username;
   final String email;
@@ -14,11 +16,11 @@ class FirestoreUserData {
 
   factory FirestoreUserData.formJson(json) {
     return FirestoreUserData(
-      username: json['username'],
-      email: json['email'],
-      password: json['password'],
-      phoneNumber: json['phoneNumber'],
-      profileImage: json['profileImage'],
+      username: json?['username'] ?? 'USERNAME',
+      email: json?['email'] ?? 'EMAIL',
+      password: json?['password'] ?? 'PASSWORD',
+      phoneNumber: json?['phoneNumber'] ?? 'PHONE NUMBER',
+      profileImage: json?['profileImage'] ?? Assets.imagesProfile,
     );
   }
 
